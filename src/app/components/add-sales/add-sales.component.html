@@ -1,0 +1,54 @@
+<div class="p-grid  p-jc-center vertical-container p-mt-4">
+    <form [formGroup]="productForm">
+        <p-card>
+            <div class="p-field p-grid">
+                <div class="p-col-6">
+                    <label for="productId" class="p-col-fixed">Product ID</label>
+                </div>
+                <div class="p-col-6">
+                    <p-inputNumber id="productId" [useGrouping]="false" pInputNumber formControlName="productID"></p-inputNumber>
+                </div>
+            </div>
+
+            <div class="p-field p-grid">
+                <div class="p-col-6">
+                    <label for="productName" class="p-col-fixed">Product Name</label>
+                </div>
+                <div class="p-col-6">
+                    <input id="productName" type="text" pInputText formControlName="productName">
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <div class="p-col-6">
+                    <label for="productManager" class="p-col-fixed">Product Manager</label>
+                </div>
+                <div class="p-col-6">
+                    <input id="productManager" type="text" pInputText formControlName="productManager">
+                </div>
+            </div>
+
+            <div class="p-field p-grid">
+                <div class="p-col-6">
+
+                    <label for="startDate" class="p-col-fixed">Sales Start date</label>
+                </div>
+                <div class="p-col-6">
+                    <p-calendar [minDate]="minDate" [showIcon]="true" formControlName="startDate" [readonlyInput]="true" inputId="startDate"></p-calendar>
+
+                </div>
+            </div>
+            <div class="p-grid p-jc-between">
+                <div class="p-col-6">
+                    <button label="Submit" pButton pRipple (click)="addProduct()" [disabled]='!productForm.valid'></button>
+                </div>
+                <div class="p-col-6">
+                    <button label="Clear" pButton pRipple (click)="clear()"></button>
+                </div>
+            </div>
+        </p-card>
+    </form>
+</div>
+
+<p-dialog header="Success" [(visible)]="displayDialog" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p>Product Added Successfully</p>
+</p-dialog>

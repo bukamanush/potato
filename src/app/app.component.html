@@ -1,0 +1,13 @@
+<div>
+    <h1>Potato Sales</h1>
+</div>
+<p-toolbar class="p-shadow-5" *ngIf="showToolbar">
+    <div class="p-toolbar-group-left">
+        <button pButton label="New Sales" icon="pi pi-plus" class="p-ml-2" (click)='navigate("/new-sales")'></button>
+        <button pButton label="Sales" class="p-ml-2" (click)='navigate("/sales")'></button>
+    </div>
+    <div class="p-toolbar-group-right">
+        <button icon='pi pi-power-off' pButton type="button" iconPos="left" (click)="logout()"></button>
+    </div>
+</p-toolbar>
+<router-outlet></router-outlet>

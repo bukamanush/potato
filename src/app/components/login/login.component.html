@@ -1,0 +1,24 @@
+<div class="p-grid  p-jc-center vertical-container p-mt-4">
+    <form [formGroup]="loginForm">
+        <p-card>
+            <div class="p-field p-grid">
+                <label for="userName" class="p-col-fixed" style="width:100px">User Name</label>
+                <div class="p-col">
+                    <input id="userName" type="text" pInputText formControlName="user">
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="password" class="p-col-fixed" style="width:100px">Password</label>
+                <div class="p-col">
+                    <input id="password" type="password" pPassword formControlName="password">
+                </div>
+            </div>
+
+            <div class="p-field p-grid">
+                <div class="p-col">
+                    <button label="Submit" pButton pRipple (click)="login()" [disabled]='!loginForm.valid'></button>
+                </div>
+            </div>
+        </p-card>
+    </form>
+</div>

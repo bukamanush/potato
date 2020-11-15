@@ -1,0 +1,107 @@
+<div class="card" *ngIf="loaded" #dt>
+    <p-table [value]="sales.data" dataKey="id" [globalFilterFields]="['productID','productName','salesQ1','salesQ2','salesQ3','salesQ4']">
+        <ng-template pTemplate="caption">
+            <div class="table-header p-d-flex p-jc-between">
+                <div>
+                    Sales
+                </div>
+                <div class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="productID" rowspan="2">{{sales.column[0].header}}
+                    <p-sortIcon field="productID"></p-sortIcon>
+                </th>
+                <th pSortableColumn="productName" rowspan="2">{{sales.column[1].header}}
+                    <p-sortIcon field="productName"></p-sortIcon>
+                </th>
+                <th colspan="4">{{sales.column[2].header}}
+
+                </th>
+                <th rowspan="2">{{sales.column[3].header}}
+
+                </th>
+            </tr>
+            <tr>
+                <th pSortableColumn="salesQ1">
+                    {{sales.column[2].subHeaders[0].header}}
+                    <p-sortIcon field="salesQ1"></p-sortIcon>
+                </th>
+                <th pSortableColumn="salesQ2">
+                    {{sales.column[2].subHeaders[1].header}}
+                    <p-sortIcon field="salesQ2"></p-sortIcon>
+                </th>
+                <th pSortableColumn="salesQ3">
+                    {{sales.column[2].subHeaders[2].header}}
+                    <p-sortIcon field="salesQ3"></p-sortIcon>
+                </th>
+                <th pSortableColumn="salesQ4">
+                    {{sales.column[2].subHeaders[3].header}}
+                    <p-sortIcon field="salesQ4"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-sale>
+            <tr>
+                <td>{{sale.productID}}</td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="sale.productName">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{sale.productName}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="sale.salesQ1">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{sale.salesQ1}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="sale.salesQ2">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{sale.salesQ2}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="sale.salesQ3">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{sale.salesQ3}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="sale.salesQ4">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{sale.salesQ4}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    {{sale.salesQ1+sale.salesQ2+sale.salesQ3+sale.salesQ4}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
